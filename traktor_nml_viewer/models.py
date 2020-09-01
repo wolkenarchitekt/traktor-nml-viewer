@@ -14,6 +14,8 @@ class Entry(models.Model):
     audio_id = models.TextField(null=True)
     bitrate = models.IntegerField(null=True)
     bpm = models.IntegerField(null=True)
+    comment = models.TextField(null=True)
+    comment2 = models.TextField(null=True)
     file = models.TextField(null=True)
     import_date = models.DateField(null=True)
     key = models.TextField(null=True)

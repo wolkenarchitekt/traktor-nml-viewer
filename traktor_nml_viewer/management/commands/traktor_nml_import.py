@@ -32,7 +32,7 @@ class Command(BaseCommand):
                 db_entry.artist = nml_entry.artist
                 db_entry.title = nml_entry.title
                 db_entry.audio_id = nml_entry.audio_id
-                if nml_entry.tempo:
+                if nml_entry.tempo and nml_entry.tempo.bpm:
                     db_entry.bpm = int(nml_entry.tempo.bpm)
                 db_entry.key = nml_entry.info.key
                 if nml_entry.album:
@@ -41,6 +41,8 @@ class Command(BaseCommand):
                 db_entry.genre = nml_entry.info.genre
                 db_entry.playtime = nml_entry.info.playtime_float
                 db_entry.playcount = nml_entry.info.playcount
+                db_entry.comment = nml_entry.info.comment
+                db_entry.comment2 = nml_entry.info.rating
                 if nml_entry.info.last_played:
                     db_entry.last_played = datetime.datetime.strptime(
                         nml_entry.info.last_played, "%Y/%m/%d"
