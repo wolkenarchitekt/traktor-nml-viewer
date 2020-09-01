@@ -35,7 +35,8 @@ class Command(BaseCommand):
                 if nml_entry.tempo:
                     db_entry.bpm = int(nml_entry.tempo.bpm)
                 db_entry.key = nml_entry.info.key
-                db_entry.album = nml_entry.album.title
+                if nml_entry.album:
+                    db_entry.album = nml_entry.album.title
                 db_entry.bitrate = nml_entry.info.bitrate
                 db_entry.genre = nml_entry.info.genre
                 db_entry.playtime = nml_entry.info.playtime_float
