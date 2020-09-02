@@ -4,19 +4,15 @@ from traktor_nml_viewer.models import Entry
 
 
 class EntryAdmin(admin.ModelAdmin):
-    # list_display = (
-    #     "artist",
-    #     "title",
-    #     "import_date",
-    #     "file",
-    #     "playcount",
-    #     "last_played",
-    # )
-    list_display = [
-        field.name
-        for field in Entry._meta.get_fields()
-        if field.name not in ["audio_id"]
-    ]
+    list_display = (
+        "artist",
+        "title",
+        "key",
+        "bpm",
+        "import_date",
+        "playcount",
+        "last_played",
+    )
     ordering = ("import_date",)
 
 
