@@ -7,17 +7,20 @@ from django.core.management.base import BaseCommand
 
 from progress.bar import Bar
 from traktor_nml_utils import TraktorCollection, TraktorHistory, is_history_file
-from traktor_nml_viewer.models import Entry, NMLFile
+from traktor_nml_viewer.models import CollectionEntry, NMLFile, HistoryEntry
 
 logger = logging.getLogger(__name__)
 
 
 def import_nml(path: Path):
     print(f"parsing file: {path.name}")
+
     if is_history_file(path):
         history = TraktorHistory(path=path)
-        from ipdb import set_trace
-        set_trace()
+        entry = HistoryEntry()
+        entry.file = history.nml.playlists.node.subnodes.node.playlist.entry[0].primarykey.key
+        print(entry.file)
+        entry.save()
     else:
         collection = TraktorCollection(path=path)
         bar = Bar(
@@ -25,7 +28,7 @@ def import_nml(path: Path):
         )
 
         for nml_entry in collection.nml.collection.entry:
-            db_entry = Entry()
+            db_entry = CollectionEntry()
             nml_file = NMLFile(file=path.name)
             nml_file.save()
             db_entry.nml_file = nml_file

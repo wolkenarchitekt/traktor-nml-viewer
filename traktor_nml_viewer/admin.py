@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from traktor_nml_viewer.models import Entry
+from traktor_nml_viewer.models import CollectionEntry
 
 
 class EntryAdmin(admin.ModelAdmin):
@@ -18,4 +18,4 @@ class EntryAdmin(admin.ModelAdmin):
 
 admin.site.site_header = "Traktor NML viewer"
 # admin.site.register(NMLFile)
-admin.site.register(Entry, EntryAdmin)
+admin.site.register(CollectionEntry, EntryAdmin)

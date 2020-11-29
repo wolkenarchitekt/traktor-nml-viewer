@@ -8,7 +8,7 @@ class NMLFile(models.Model):
         db_table = "nmlfile"
 
 
-class Entry(models.Model):
+class CollectionEntry(models.Model):
     album = models.TextField(null=True)
     artist = models.TextField(null=True)
     audio_id = models.TextField(null=True)
@@ -30,7 +30,17 @@ class Entry(models.Model):
     title = models.TextField(null=True)
 
     class Meta:
-        db_table = "entry"
+        db_table = "collection_entry"
 
     def __str__(self):
         return f"{self.artist} - {self.title}"
+
+
+class HistoryEntry(models.Model):
+    file = models.TextField(null=True)
+
+    class Meta:
+        db_table = "playlist_entry"
+
+    def __str__(self):
+        return f"{self.file}"
