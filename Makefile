@@ -21,6 +21,11 @@ virtualenv-runserver:
 	. $(VIRTUALENV_DIR)/bin/activate && \
 		python manage.py runserver
 
+virtualenv-shell:
+	python3.7 -m venv $(VIRTUALENV_DIR)
+	. $(VIRTUALENV_DIR)/bin/activate && \
+		python manage.py shell
+
 virtualenv-import-nml:
 	python3.7 -m venv $(VIRTUALENV_DIR)
 	. $(VIRTUALENV_DIR)/bin/activate && \
